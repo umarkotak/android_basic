@@ -17,7 +17,9 @@ public class MainActivity extends AppCompatActivity {
     private EditText mNoHpEditText;
     private EditText mUsernameEditText;
     private EditText mPasswordEditText;
+    private EditText mAddSaldoEditText;
     private Button mAddAccountButton;
+    private Button mAddSaldoButton;
     private AccountClient accountClient = new AccountClient();
 
     @Override
@@ -44,10 +46,21 @@ public class MainActivity extends AppCompatActivity {
                 accountClient.addAccount(account);
             }
         });
+
+        mAddSaldoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Integer jumlah_saldo = Integer.valueOf(mAddSaldoEditText.getText().toString());
+                String accountNoHp = mNoHpEditText.getText().toString();
+                accountClient.addSaldo(accountNoHp, jumlah_saldo);
+            }
+        });
     }
 
     private void initLayoutObject() {
         mAddAccountButton = (Button) findViewById(R.id.btn_add_account);
+        mAddSaldoButton = (Button) findViewById(R.id.btn_add_saldo);
         mNamaEditText= (EditText) findViewById(R.id.et_nama);
         mEmailEditText = (EditText) findViewById(R.id.et_email);
         mNoKtpEditText = (EditText) findViewById(R.id.et_no_ktp);
@@ -55,5 +68,6 @@ public class MainActivity extends AppCompatActivity {
         mNoHpEditText = (EditText) findViewById(R.id.et_no_hp);
         mUsernameEditText = (EditText) findViewById(R.id.et_username);
         mPasswordEditText = (EditText) findViewById(R.id.et_password);
+        mAddSaldoEditText = (EditText) findViewById(R.id.et_jumlah_saldo);
     }
 }

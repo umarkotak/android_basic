@@ -10,7 +10,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AccountClient {
-    private final String BASE_URL = "http://192.168.0.13";
+    private final String BASE_URL = "http://192.168.0.4";
     private Retrofit retrofit;
     private AccountAPI accountAPI;
 
@@ -33,7 +33,20 @@ public class AccountClient {
         call.enqueue(new Callback<Account>() {
             @Override
             public void onResponse(Call<Account> call, Response<Account> response) {
+            }
 
+            @Override
+            public void onFailure(Call<Account> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
+    public void addSaldo(String nohp, Integer jumlah) {
+        Call<Account> call = accountAPI.addSaldo(nohp, jumlah);
+        call.enqueue(new Callback<Account>() {
+            @Override
+            public void onResponse(Call<Account> call, Response<Account> response) {
             }
 
             @Override

@@ -11,4 +11,8 @@ public interface AccountAPI {
     Call<Account> addAccount(@Field("name") String name, @Field("email") String email, @Field("noktp") String noktp,
                              @Field("address") String address, @Field("nohp") String nohp, @Field("username") String username,
                              @Field("password") String password);
+
+    @POST("/atp/user/tambahsaldo.php")
+    @FormUrlEncoded
+    Call<Account> addSaldo(@Field("nohp") String nohp, @Field("jumlah") Integer jumlah);
 }
